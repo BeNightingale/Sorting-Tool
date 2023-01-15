@@ -1,0 +1,9 @@
+.idea/*
+gradlew.bat
+gradlew
+.gradle/*
+.gradle.swp
+Sorting\ Tool/task/build/*
+gradle/wrapper/gradle-wrapper.jar
+Sorting Tool/task/out/*
+
