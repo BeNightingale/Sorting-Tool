@@ -400,7 +400,7 @@ files:
 - name: src/sorting/Algorithms.java
   visible: true
   learner_created: true
-feedback_link: https://hyperskill.org/projects/45/stages/240/implement#comment
+feedback_link: https://hyperskill.org/learn/step/5382#comment
 status: Solved
 feedback:
   message: Congratulations!

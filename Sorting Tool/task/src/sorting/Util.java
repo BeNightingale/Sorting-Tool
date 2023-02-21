@@ -5,24 +5,36 @@ import java.util.Scanner;
 
 public class Util {
 
+    private Util() {
+        // sth
+    }
+
     protected static void evaluateInput(Scanner scanner, String inputType) {
         Algorithms algorithms = new Algorithms();
         String result = switch (inputType) {
-            case "long" -> {
+            case "long-natural" -> {
                 List<Long> numbersList = algorithms.readLongs(scanner);
-                yield algorithms.longFunction.apply(numbersList);
+                yield algorithms.sortLongNaturallyFunction.apply(numbersList);
             }
-            case "line" -> {
+            case "long-byCount" -> {
+                List<Long> numbersList = algorithms.readLongs(scanner);
+                yield algorithms.sortLongByCountFunction.apply(numbersList);
+            }
+            case "line-natural" -> {
                 List<String> linesList = algorithms.readLines(scanner);
-                yield algorithms.lineFunction.apply(linesList);
+                yield algorithms.sortLinesNaturallyFunction.apply(linesList);
             }
-            case "word" -> {
+            case "line-byCount" -> {
+                List<String> linesList = algorithms.readLines(scanner);
+                yield algorithms.sortLinesByCountFunction.apply(linesList);
+            }
+            case "word-natural" -> {
                 List<String> wordsList = algorithms.readWords(scanner);
-                yield algorithms.wordFunction.apply(wordsList);
+                yield algorithms.sortWordsNaturallyFunction.apply(wordsList);
             }
-            case "sortNumbers" -> {
-                List<Long> numbersList = algorithms.readLongs(scanner);
-                yield algorithms.sortLongFunction.apply(numbersList);
+            case "word-byCount" -> {
+                List<String> wordsList = algorithms.readWords(scanner);
+                yield algorithms.sortWordsByCountFunction.apply(wordsList);
             }
             default -> {
                 System.out.println("error");
