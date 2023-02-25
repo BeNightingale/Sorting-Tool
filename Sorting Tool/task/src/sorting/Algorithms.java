@@ -66,9 +66,14 @@ public class Algorithms {
 
     public List<Long> readLongs(Scanner scanner) {
         List<Long> numbersList = new ArrayList<>();
-        while (scanner.hasNextLong()) {
-            long number = scanner.nextLong();
-            numbersList.add(number);
+        while (scanner.hasNext()) {
+            String stringNum = scanner.next();
+            try {
+                long number = Long.parseLong(stringNum);
+                numbersList.add(number);
+            } catch (NumberFormatException ex) {
+                System.out.printf("\"%s\" is not a long. It will be skipped. ", stringNum);
+            }
         }
         return numbersList;
     }
