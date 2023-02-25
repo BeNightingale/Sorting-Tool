@@ -40,7 +40,7 @@ public class Util {
                     default -> Collections.emptyList();
                 };
                 yield switch (sortingType) {
-                    case NATURAL-> algorithms.sortLinesNaturallyFunction.apply(linesList);
+                    case NATURAL -> algorithms.sortLinesNaturallyFunction.apply(linesList);
                     case BY_COUNT -> algorithms.sortLinesByCountFunction.apply(linesList);
                     default -> "";
                 };
@@ -68,7 +68,7 @@ public class Util {
         Algorithms algorithms = new Algorithms();
         switch (writingOutputType) {
             case "toConsole" -> algorithms.writeStringToConsole.accept(content);
-            case "toFile" -> algorithms.writeStringToFile.accept(content,outputFileName);
+            case "toFile" -> algorithms.writeStringToFile.accept(content, outputFileName);
             default -> throw new ArgumentException("Wrong WritingOutputType.");
         }
     }
@@ -102,7 +102,7 @@ public class Util {
         String[] args2 = cloneAndSortArray(args);
         if (Arrays.binarySearch(args2, arguments.get(INPUT_FILE)) >= 1) {
             for (int i = 0; i < args.length; i++) {
-                if (arguments.get(INPUT_FILE).equals(args[i]) && i != args.length - 1 ) {
+                if (arguments.get(INPUT_FILE).equals(args[i]) && i != args.length - 1) {
                     readingInputType = FROM_FILE;
                     inputFileName = args[i + 1];
                     break;
@@ -120,7 +120,7 @@ public class Util {
         String[] args2 = cloneAndSortArray(args);
         if (Arrays.binarySearch(args2, arguments.get(OUTPUT_FILE)) >= 1) {
             for (int i = 0; i < args.length; i++) {
-                if (arguments.get(OUTPUT_FILE).equals(args[i]) && i != args.length - 1 ) {
+                if (arguments.get(OUTPUT_FILE).equals(args[i]) && i != args.length - 1) {
                     writingOutputType = "toFile";
                     outputFileName = args[i + 1];
                     break;
@@ -155,7 +155,7 @@ public class Util {
     public static String[] cloneAndSortArray(String[] args) {
         String[] args2 = new String[args.length];
         for (int i = 0; i < args.length; i++) {
-             args2[i] = args[i];
+            args2[i] = args[i];
         }
         Arrays.sort(args2);
         return args2;

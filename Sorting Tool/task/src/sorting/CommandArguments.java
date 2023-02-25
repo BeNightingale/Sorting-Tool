@@ -8,8 +8,9 @@ public enum CommandArguments {
     static final Map<CommandArguments, String> arguments = Map.of(
             SORTING_TYPE, "-sortingType",
             DATA_TYPE, "-dataType",
-            INPUT_FILE,"-inputFile",
+            INPUT_FILE, "-inputFile",
             OUTPUT_FILE, "-outputFile");
+
     public static boolean isStringMapsValue(String elem) {
         if (elem == null || "".equals(elem)) {
             return false;

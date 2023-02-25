@@ -77,6 +77,7 @@ public class Algorithms {
             throw new ArgumentException("OutputFile not found.");
         }
     };
+
     Consumer<String> writeStringToConsole = System.out::println;
 
     public List<Long> readLongs(Scanner scanner) {
