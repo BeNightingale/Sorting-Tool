@@ -680,9 +680,16 @@ files:
         }
     }
   learner_created: true
-- name: src/sorting/SortingType.java
+- name: src/sorting/CommandArguments.java
+  visible: true
+  learner_created: true
+- name: out.txt
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5386#comment
-status: Unchecked
-record: -1
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
+    Academy</a> to continue learning.
+  time: "Sat, 25 Feb 2023 18:19:11 UTC"
+record: 6

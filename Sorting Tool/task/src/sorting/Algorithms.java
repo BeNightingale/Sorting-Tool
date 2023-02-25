@@ -1,6 +1,11 @@
 package sorting;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.*;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -64,18 +69,18 @@ public class Algorithms {
         return String.format("Total words: %s.%n%s", total, formatOccurrencesMap(sortedMap, total));
     };
 
-    public List<Long> readLongs(Scanner scanner) {
-        List<Long> numbersList = new ArrayList<>();
-        while (scanner.hasNext()) {
-            String stringNum = scanner.next();
-            try {
-                long number = Long.parseLong(stringNum);
-                numbersList.add(number);
-            } catch (NumberFormatException ex) {
-                System.out.printf("\"%s\" is not a long. It will be skipped. ", stringNum);
-            }
+    BiConsumer<String, String> writeStringToFile = (content, fileOutputName) -> {
+        try (PrintWriter zapis = new PrintWriter(fileOutputName)) {
+            zapis.print(content);
+        } catch (FileNotFoundException e) {
+            System.out.println("OutputFile not found.");
+            throw new ArgumentException("OutputFile not found.");
         }
-        return numbersList;
+    };
+    Consumer<String> writeStringToConsole = System.out::println;
+
+    public List<Long> readLongs(Scanner scanner) {
+        return parseToLong(readWords(scanner));
     }
 
     public List<String> readLines(Scanner scanner) {
@@ -94,6 +99,47 @@ public class Algorithms {
             wordsList.add(word);
         }
         return wordsList;
+    }
+
+    public List<String> readFileByLine(String fileName) throws FileNotFoundException {
+        List<String> fileLines = new ArrayList<>();
+        File file = new File(fileName);
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNext()) {
+                String line = scanner.nextLine();
+                fileLines.add(line);
+            }
+        }
+        return fileLines;
+    }
+
+    public List<String> readFileByString(String fileName) throws FileNotFoundException {
+        List<String> fileStrings = new ArrayList<>();
+        File file = new File(fileName);
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNext()) {
+                String line = scanner.next();
+                fileStrings.add(line);
+            }
+        }
+        return fileStrings;
+    }
+
+    public List<Long> readFileByLong(String fileName) throws FileNotFoundException {
+        return parseToLong(readFileByString(fileName));
+    }
+
+    public List<Long> parseToLong(List<String> strings) {
+        List<Long> longs = new ArrayList<>();
+        for (String str : strings) {
+            try {
+                long number = Long.parseLong(str);
+                longs.add(number);
+            } catch (NumberFormatException nex) {
+                System.out.printf("\"%s\" is not a long. It will be skipped.%n", str);
+            }
+        }
+        return longs;
     }
 
     private String formatLinesList(List<String> linesList) {
